@@ -1,0 +1,25 @@
+<div class="threeDPlayer">
+    <div id="3dPlayer"  class="tp-viewport"></div>
+    <div class="tp-controls">
+        <div class="tpc-row">
+            <div class="tpc-btns" b-click="vm.changeMode('AUTO')" b-class="active:vm.controls.mode == 'AUTO'">A</div>
+            <div class="tpc-btns" b-click="vm.changeMode('MANUAL')" b-class="active:vm.controls.mode == 'MANUAL'">M</div>
+            <div class="tpc-btns" b-click="vm.changeTool('MOVE')"
+                 b-class="active:vm.controls.tool.current == 'MOVE', disable:!vm.controls.tool.enabled"><i class="fa fa-plus"></i></div>
+            <div class="tpc-btns" b-click="vm.changeTool('CUTVIEW')"
+                 b-class="active:vm.controls.tool.current == 'CUTVIEW', disable:!vm.controls.tool.enabled">C</div>
+            <div class="tpc-btns -right" b-class="active:vm.controls.cutview.axis == 'Z'"
+                 b-click="vm.changeCutViewAxis('Z')">Z</div>
+            <div class="tpc-btns -right" b-class="active:vm.controls.cutview.axis == 'Y'"
+                 b-click="vm.changeCutViewAxis('Y')">Y</div>
+            <div class="tpc-btns -right" b-class="active:vm.controls.cutview.axis == 'X'"
+                 b-click="vm.changeCutViewAxis('X')">X</div>
+            <div class="tpc-btns -right" b-class="active:vm.controls.cutview.enabled"
+                 b-click="vm.toggleCutView()">Enable</div>
+        </div>
+        <div class="tpc-row">
+            <div class="tpc-btns -right" b-click="vm.changeCutViewVal(-0.1)"><i class="fa fa-minus"></i></div>
+            <div class="tpc-btns -right" b-click="vm.changeCutViewVal(0.1)"><i class="fa fa-plus"></i></div>
+        </div>
+    </div>
+</div>

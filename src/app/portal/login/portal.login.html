@@ -1,0 +1,16 @@
+<div class="portalLogin">
+    <div class="pl-half">
+
+    </div>
+    <div class="pl-half">
+        <div class="plf-form">
+            <input type="text" placeholder="Username" ng-model="vm.username">
+            <input type="password" placeholder="Password" ng-model="vm.password">
+            <button ng-click="vm.login()">
+                <span ng-show="!vm.fetching">LOGIN</span>
+                <span ng-show="vm.fetching"><i class="fa fa-spin fa-gear" style="margin-right: 10px"> </i>LOGGING IN</span>
+            </button>
+            <div class="plf-err" ng-show="vm.error">{{vm.error}}</div>
+        </div>
+    </div>
+</div>

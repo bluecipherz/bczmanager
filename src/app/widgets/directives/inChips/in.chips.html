@@ -1,0 +1,13 @@
+<div class="in-chips" ng-repeat="item in data.data" ng-if="!item.hide">
+    <!--<div class="inc-redirect-button" ></div>-->
+    <span class="inc-button -small" ng-click="redirect(item)"
+          ng-class="{'-red':!item.indirect && item.type && item.type == types.ROLE}"></span>
+    <span class="inc-name">{{item[data.display]}}</span>
+    <span class="inc-button" ng-click="close(item)" ng-if="!item.loading && !item.indirect"><i class="fa fa-times"></i></span>
+    <span class="inc-button -loading" ng-if="!item.failed && item.loading">
+        <div class="incb-loader"></div>
+    </span>
+    <span class="inc-button -retry" ng-click="retry(item); item.failed = false"  ng-if="item.failed">
+      <i class="fa fa-exclamation-triangle"></i>
+    </span>
+</div>

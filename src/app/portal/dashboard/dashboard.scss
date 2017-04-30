@@ -1,0 +1,67 @@
+
+
+.dashboard{
+  @extend box;
+  @extend basicFont;
+  position: fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  background: #222;
+  .db-container,
+  .db-header{
+    @extend box;
+    position: absolute;
+    left:0;
+    right:0;
+  }
+  .db-header{
+    top:0;
+    height:50px;
+    background: #333;
+    @include shadow(0 0 10px rgba(0,0,0,0.3));
+    z-index: 10000;
+  }
+  .db-container{
+    top:50px;
+    bottom: 0;
+    padding: 3px;
+  }
+  .empty{
+    @extend textVerticalAlign;
+    width: 100%;
+    height:100%;
+    font-size: 30px;
+    color: #ccc;
+  }
+
+
+  .baseWidget{
+    @extend box;
+    padding: 3px;
+    .baseWidget-container{
+      @extend box;
+      width: 100%;
+      height: 100%;
+      background: #333;
+      .bwc-header,
+      .bwc-container{
+        @extend box;
+        position: absolute;
+      }
+      .bwc-header{
+        left:0;
+        top:0;
+        right:0;
+        height:35px;
+      }
+      .bwc-container{
+        left:3px;
+        right:3px;
+        bottom:3px;
+        top:38px;
+      }
+    }
+  }
+}

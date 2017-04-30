@@ -1,0 +1,51 @@
+.timelineContainer{
+  @extend box;
+  width:100%;
+  height: 100%;
+  padding: 5px;
+  .timeline:hover{
+    cursor: pointer;
+  }
+  .timeline{
+    @extend box;
+    position: absolute;
+    top:5px;
+    left: 305px;
+    right:5px;
+    bottom: 5px;
+  }
+  .timelineControls{
+    @extend box;
+    width: 295px;
+    background: #f8f8f8;
+    height: 100%;
+    .tc-button:active{
+      font-size: 130%;
+    }
+    .tc-button:hover{
+      cursor: pointer;
+      color: #222;
+    }
+    .tc-button{
+      @extend box;
+      width: 25%;
+      height: 100%;
+      text-align: center;
+      display: flex;
+      justify-content:center;
+      //align-content:center;
+      flex-direction:column; /* column | row */
+      font-size: 140%;
+      color: #888;
+      border: 1px solid #eee;
+    }
+  }
+}
+
+.visTrans{
+  margin: 0;
+  top:0;
+  left: 0;
+  x:0;
+  y:0;
+}

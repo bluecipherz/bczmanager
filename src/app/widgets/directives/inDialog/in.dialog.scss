@@ -1,0 +1,23 @@
+.inDialogContainer{
+  position: fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  right: 0;
+  z-index: 999999;
+  .ind-dialog-backdrop{
+    @extend fullBox;
+    background: rgba(255,255,255,0.85);
+  }
+  .ind-dialog{
+    @extend box;
+    @extend roundedSquare;
+    position: absolute;
+    top:20%;
+    left:25%;
+    height: 60%;
+    width: 50%;
+    background: #fff;
+    @include shadow(0 0 40px rgba(0,0,0,0.3));
+  }
+}

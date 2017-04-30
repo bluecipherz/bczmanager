@@ -1,0 +1,16 @@
+<div class="in_listBox" ng-class="{'inlb_fullWidth': data.relativeWidth}">
+    <div class="inlb_container">
+        <div class="inlbc_search">
+            <search-input data="searchInputData"></search-input>
+        </div>
+        <div class="inlbc_list">
+            <ui-loader data="data.uiLoader"></ui-loader>
+            <div class="inlbc_item" ng-click="onclick(item)"
+                 ng-class="{'active': data.selectedItem[data.uid] == item[data.uid]}"
+                 ng-repeat="item in filteredData">{{item[data.display]}}</div>
+        </div>
+        <div class="inlbc_op">
+          <operation-tool-bar data="data.operationData"></operation-tool-bar>
+        </div>
+    </div>
+</div>

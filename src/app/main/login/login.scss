@@ -1,0 +1,28 @@
+.loginDialogContainer{
+  @extend fullBox;
+  @extend basicFont;
+  padding-top: 40px;
+  img{
+    @extend box;
+    width: 30%;
+    margin:10px 35%;
+  }
+  input{
+    @extend box;
+    @extend basicFont;
+    width: 70%;
+    margin: 5px 15%;
+  }
+  button{
+    @extend inButton;
+    width: 40%;
+    margin: 10px 30%;
+  }
+  span{
+    @extend box;
+    @extend basicFont;
+    width: 100%;
+    text-align: center;
+    color: #d61e2f;
+  }
+}

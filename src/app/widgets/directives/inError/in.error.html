@@ -1,0 +1,18 @@
+<div class="inError" ng-show="errors.popup.length > 0">
+  <div class="ierr-popup" ng-repeat="error in errors.popup">
+    <div class="iep-heading"><i class="fa fa-exclamation-triangle"></i>{{error.heading}}</div>
+    <div class="iep-body">
+      <p>{{error.body}}</p>
+      <div ng-click="close(error, true)">OK</div>
+    </div>
+  </div>
+</div>
+<div class="inErrorToast" ng-if="errors.toast.length > 0">
+  <div class="iet-item" ng-if="errors.toast.length > 4">
+    <div class="ieti-heading">ERROR</div>
+    <div class="ieti-chip">+ {{errors.toast.length - 4}}</div>
+  </div>
+  <div class="iet-item" ng-repeat="error in errors.toast | limitTo : 4">
+    <div class="ieti-heading">{{error.heading}}</div>
+  </div>
+</div>

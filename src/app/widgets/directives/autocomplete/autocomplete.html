@@ -1,0 +1,6 @@
+<div class="in-autocomplete" ng-show="data.active && filtered.length > 0">
+    <div class="inac-item" ng-class="{'active':item[data.uid] == selectedItem[data.uid]}"
+         ng-mousemove="selectItem(item)" ng-mousedown="mouseClick(item)"
+         ng-repeat="item in filtered">{{item.name}}</div>
+    <div class="inac-item -disabled" ng-if="filtered.length <= 0">{{data.notFoundText}}</div>
+</div>

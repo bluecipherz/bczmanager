@@ -1,0 +1,14 @@
+<div class="timelineContainer">
+    <div class="timelineControls">
+        <div class="tc-button" b-click="player.togglePlay()">
+            <i ng-if="!player.playing" class="fa fa-play"></i>
+            <i ng-if="player.playing" class="fa fa-pause"></i>
+        </div>
+        <div class="tc-button"><i class="fa fa-backward"></i></div>
+        <div class="tc-button"><i class="fa fa-forward"></i></div>
+        <div class="tc-button"><i class="fa fa-stop"></i></div>
+    </div>
+    <div id="timeline" class="timeline">
+        <svg id="timelineSVG"></svg>
+    </div>
+</div>

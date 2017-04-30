@@ -1,0 +1,109 @@
+
+
+.in-chips.-retry{
+  border: 1px solid #e99e53;
+}
+.in-chips.ng-leave{
+  @include transform(scale(1));
+  border: 1px solid $themeRed;
+}
+.in-chips.ng-leave-active{
+  @include transform(scale(0));
+}
+.in-chips.ng-enter{
+  @include transform(scale(0));
+}
+.in-chips.ng-enter-active{
+  @include transform(scale(1));
+  border: 1px solid $themeGreen;
+}
+.in-chips{
+  cursor: default;
+  @extend box;
+  @extend basicFont;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  border: 1px solid transparent;
+  @include border-radius(15px);
+  font-size: $fontSize6;
+  //padding: 0 0 0 12px;
+  margin: 2px 3px;
+  background: #eee;
+  @include transition(0.3s);
+
+  .inc-redirect-button:hover{
+    border: 1px solid $themeColor1;
+    cursor: pointer;
+  }
+  .inc-redirect-button{
+    position: absolute;
+    left:0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    @include transition(0.2s);
+    @include borderBox();
+    @include border-radius(16px);
+  }
+  span{
+    @extend box;
+    z-index: 10;
+  }
+  .inc-name{
+    z-index: 1;
+    margin-right:14px;
+  }
+  .inc-button.-small.-red:hover,
+  .inc-button.-small:hover{
+    background: $themeColor1;
+  }
+  .inc-button.-small.-red{
+    background: $themeOrange;
+  }
+  .inc-button.-small{
+    height: 14px;
+    width: 14px;
+    background: $themeGreen;
+    margin: 8px;
+  }
+  .inc-button:active i{
+    font-size: 85%;
+  }
+  .inc-button:hover{
+    cursor: pointer;
+    color: $darkGrey;
+    background: #ddd;
+  }
+  .inc-button.-retry{
+    height: 28px;
+    width: 28px;
+    line-height: 28px;
+    color: #ff5a00;
+    font-size: 90%;
+  }
+  .inc-button.-loading{
+    border: 1px solid #ccc;
+  }
+  .inc-button{
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size:15px;
+    @include border-radius(100%);
+    color: $lightGrey;
+    margin-left: -8px;
+  }
+  .incb-loader{
+    @extend box;
+    height: 20px;
+    width: 20px;
+    margin : 4px;
+    @include border-radius(100%);
+    border:2px solid transparent;
+    border-left-color: $themeColor1;
+    @include spin(0.7s);
+  }
+}

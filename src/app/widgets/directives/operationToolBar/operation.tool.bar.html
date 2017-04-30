@@ -1,0 +1,33 @@
+<div class="opToolBar">
+    <div class="otb_buttons">
+        <div class="otbb_tab" ng-click="selectTab(tab)"
+             style="width:{{100/data.data.length}}%"ng-repeat="tab in data.data">
+            <div class="otbbt_item"
+                 ng-class="{'disable' : tab.disable , 'green' : tab.trigger.color == 'green',  'red' : tab.trigger.color == 'red'}">
+                <i class="fa {{tab.trigger.icon}}"></i>
+            </div>
+        </div>
+    </div>
+    <div class="otb_container" id="otb_container_{{tab.id}}" ng-class="{'active' : selectedTab.id == tab.id}" ng-repeat="tab in data.data">
+        <div class="otbc_item">
+            <div class="otbci_heading">{{tab.trigger.name}}</div>
+            <div class="otbci_close" ng-click="close()"><i class="fa fa-chevron-down"></i></div>
+        </div>
+        <div class="otbc_item" ng-if="tab.message">
+            <div class="otbc_message">{{tab.message}}</div>
+        </div>
+        <div class="otbc_item" ng-repeat="input in tab.form">
+            <div class="otbci_status" ng-if="input.status">
+                <i class="fa fa-exclamation-triangle" ng-show="input.status == 'ERROR'" title="{{input.statusMessage}}"></i>
+                <i class="fa fa-check green" ng-show="input.status == 'SUCCESS'" title="{{input.statusMessage}}"></i>
+                <span ng-show="input.status == 'LOADING'" title="{{input.statusMessage}}">
+                    <i class="fa fa-spin fa-gear blue"></i>
+                </span>
+            </div>
+            <input  type="{{input.type}}" ng-keydown="keydown($event, 'input', input, tab)" placeholder="{{input.name}}"
+                    ng-model="input.model" ng-if="input.type == 'text' || input.type == 'password'">
+            <button ng-if="input.type == 'button'" ng-click="click(input, tab)"
+                    ng-class="{'red' : input.color == 'red', 'disable' : input.disable}">{{input.name}}</button>
+        </div>
+    </div>
+</div>

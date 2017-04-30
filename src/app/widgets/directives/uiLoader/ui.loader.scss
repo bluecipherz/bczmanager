@@ -1,0 +1,17 @@
+.uiLoader{
+  position: absolute;
+  left:0;
+  top:0;
+  right: 0;
+  bottom:0;
+  background: rgba(255,255,255,0.8);
+  z-index: 99999;
+  .uil-text{
+    @extend basicFont;
+    @extend textVerticalAlign;
+    width: 100%;
+    height: 100%;
+    padding:0 10px;
+    color: $grey;
+  }
+}

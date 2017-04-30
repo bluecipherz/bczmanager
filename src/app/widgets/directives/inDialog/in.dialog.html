@@ -1,0 +1,6 @@
+<div class="inDialogContainer"ng-show="active" ng-keydown="keydown($event)">
+    <div class="ind-dialog-backdrop" ng-click="hide()"></div>
+    <div class="ind-dialog"  style="{{style}}"  ng-if="active">
+        <div ng-include="data.templateUrl" dynamic-controller="data.controller"></div>
+    </div>
+</div>

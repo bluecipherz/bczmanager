@@ -1,0 +1,6 @@
+<div class="uiLoader" ng-if="data.fetching || data.error && data.message">
+  <div class="uil-text" ng-show="!data.fetching && data.error && data.message">{{data.message}}</div>
+  <div class="uil-text" ng-show="data.fetching">
+    <span class="in-spinner"></span>
+  </div>
+</div>

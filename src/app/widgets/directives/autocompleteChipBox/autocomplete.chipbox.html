@@ -1,0 +1,12 @@
+<div class="autoChipBox">
+    <div class="globalContainer">
+        <div class="auc-container" tabindex="0">
+            <div class="auc-inputTrigger" ng-click="onFocus()"></div>
+            <in-chips data="data" wid="data.wid"></in-chips>
+            <div class="" tabindex="0" ng-keyup="keyup($event)" ng-keydown="keydown($event)">
+                <input ng-blur="onBlur()" ng-model="mainInput">
+                <autocomplete data="data" event="event"></autocomplete>
+            </div>
+        </div>
+    </div>
+</div>

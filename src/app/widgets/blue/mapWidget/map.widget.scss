@@ -1,0 +1,10 @@
+.mapWidget{
+  @extend box;
+  width:  100%;
+  height: 100%;
+  .wm-map{
+    @extend box;
+    width: 100%;
+    height:100%;
+  }
+}

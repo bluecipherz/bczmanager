@@ -1,0 +1,13 @@
+<div class="intelliGrid" >
+  <div class="grid">
+    <div class="grid-item gi-w-{{widget.settings.w}} gi-vh-{{widget.settings.vh}} gi-h-{{widget.settings.h}}"
+         ng-class="{'no-UI':!widget.settings.h, 'no-UI':!widget.settings.w}"
+         widget-id="{{widget.id}}"  widget-tag="{{widget.tag}}"
+         ng-repeat="widget in vm.widgets track by widget.id" widget-data="widget" set-dom>
+      <div ng-if="widget.view && widget.settings" class="grid-inner"  widget-tag="{{widget.tag}}"
+           dynamic-controller="widget.controller" id="{{widget.tag}}" ng-include="widget.view"></div>
+      <div ng-if="!widget.view && widget.settings" class="grid-inner"  widget-tag="{{widget.tag}}"
+           dynamic-controller="widget.controller" id="{{widget.tag}}"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+.threeDPlayer{
+  @extend basicFont;
+  font-size: $fontSize5;
+  .tp-viewport{
+    @extend box;
+    position: absolute;
+    width: 100%;
+    top:0;
+    left:0;
+    bottom: 0;
+  }
+  .tp-controls{
+    @extend box;
+    width: 100%;
+    padding: 1px 2px;
+    //background: #eee;
+    .tpc-btns.disable{
+      color: #ccc!important;
+      background: #ddd!important;
+    }
+    .tpc-btns.active{
+      background: $themeGreen;
+      color: #fff;
+    }
+    .tpc-btns:hover{
+      cursor: pointer;
+    }
+    .tpc-btns.-right{
+      float: right;
+    }
+    .tpc-btns{
+      @extend box;
+      min-width: 30px;
+      height: 30px;
+      margin: 3px 2px;
+      padding:0 10px;
+      background: #ddd;
+      text-align: center;
+      line-height: 30px;
+      color: #666;
+    }
+  }
+  .tpc-row{
+    @extend box;
+    width: 100%;
+  }
+}

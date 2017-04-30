@@ -1,0 +1,27 @@
+.autoChipBox{
+  @extend fullBox;
+  .auc-inputTrigger{
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+  }
+  .auc-container:hover{
+    cursor: text;
+  }
+  .auc-container{
+    @extend fullBox;
+    @extend coolbarSmall;
+    overflow: auto;
+    input{
+      @extend basicFont;
+      border: none!important;
+      @include shadow(0 0 0 transparent!important);
+      outline:none!important;
+      height: 30px;
+      width: 100%;
+      padding-left: 10px;
+    }
+  }
+}

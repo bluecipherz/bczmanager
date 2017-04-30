@@ -1,0 +1,103 @@
+<div class="fm-leftpan" id="fm-leftpan">
+  <div class="fml-item noselect" ng-mousedown="vm.grabWidget($event, widget)" ng-repeat="(key, widget) in vm.widgetSet">
+    <div class="fmli-color" style="background:{{widget.color}}"></div>
+    <div class="fmli-name">{{key}}</div>
+    <div class="fmli-rightBorder"></div>
+  </div>
+</div>
+<div class="fm-midpan coolbar">
+  <svg id="fm-midpan"></svg>
+  <div class="fm-method-popCont" id="fm-method-popCont">
+    <div class="fm-method-backdrop" ng-click="vm.cancelAssigning()"></div>
+    <div class="fm-method-pop" id="fm-method-pop">
+      <div class="fmmp-item" ng-click="vm.assignFlow(method)" ng-repeat="method in vm.tempFuncSelObject[vm.tempSelectedWidget.tag].inputs"><i class="fa fa-file-text"></i>{{method.name}}</div>
+    </div>
+  </div>
+  <div class="fm-method-popCont fm-method-createCont" id="fm-method-create">
+    <div class="fm-method-backdrop" ng-click="vm.closeMethodCreatePopup()"></div>
+    <div class="fm-method-pop fm-method-create">
+      <div class="fmmc-head">
+        <div class="fmmch-item" ng-class="{'active':vm.mcPopupTabIndex == 0}" ng-click="vm.mcPopupTabIndex = 0">Method Definition</div>
+        <!--<div class="fmmch-item" ng-class="{'active':vm.mcPopupTabIndex == 1}" ng-click="vm.mcPopupTabIndex = 1">Inputs and Outputs</div>-->
+        <div class="fmmch-btn" ng-click="vm.closeMethodCreatePopup()"><i class="fa fa-times"></i></div>
+      </div>
+      <div class="fmmc-foot">
+        <div class="fmmcf-btn -green" ng-click="vm.saveMethodCreatePopup()">Save</div>
+        <div class="fmmcf-btn" ng-click="vm.closeMethodCreatePopup()">Cancel</div>
+      </div>
+      <div class="fmmc-cont" ng-if="vm.mcPopupTabIndex == 0">
+        <div class="fmmcc-mid">
+          <div ui-ace="aceOption"  ui-ace ng-model="vm.selectedWidget.methodDef"></div>
+        </div>
+        <div class="fmmcc-right">
+          <div class="fmmccr-half">
+            <div class="fmc-head" ng-init="vm.tempSelectedInput = vm.tempInput" ng-click="vm.tempSelectedInput = vm.tempInput">
+              <input type="text" ng-model="vm.tempInput.name" />
+              <div class="fmch-chbox  noselect">
+                <span ng-click="vm.tempInput.input = !vm.tempInput.input">INPUT</span>
+                <input type="checkbox" ng-model="vm.tempInput.input"/>
+              </div>
+              <div class="fmch-chbox  noselect">
+                <span  ng-click="vm.tempInput.output = !vm.tempInput.output">OUTPUT</span>
+                <input type="checkbox" ng-model="vm.tempInput.output"/>
+              </div>
+              <div class="fmch-btn" ng-click="vm.addInput()">ADD</div>
+            </div>
+            <div class="fmc-cont">
+              <div class="fmcc-item" ng-class="{'active':method.id == vm.tempSelectedInput.id}"
+                   ng-repeat="method in vm.selectedWidget.methods" ng-click="vm.tempSelectedInput = method">
+                <div class="fmcct-name">{{method.name}}</div>
+                <div class="fmch-chbox  noselect">
+                  <span ng-click="method.input = !method.input">INPUT</span>
+                  <input type="checkbox" ng-model="method.input"/>
+                </div>
+                <div class="fmch-chbox  noselect">
+                  <span  ng-click="method.output = !method.output">OUTPUT</span>
+                  <input type="checkbox" ng-model="method.output"/>
+                </div>
+                <div class="fmch-btn" ng-click="vm.removeInput(method)"><i class="fa fa-times"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="fmmccr-half">
+            <div class="fmc-chipSet" ng-click="vm.focusInput()">
+              <div class="fmccs-item" ng-repeat="inp in vm.tempSelectedInput.params">{{inp}}<i ng-click="vm.removeParam(inp)" class="fa fa-times"></i></div>
+              <input type="text" id="paramInput" ng-model="vm.tempParam" ng-keypress="vm.addParam($event)" ng-blur="vm.addParam()"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--<div class="fmmc-cont" ng-if="vm.mcPopupTabIndex == 1">-->
+      <!--<div class="fmmcc-"></div>-->
+      <!--</div>-->
+    </div>
+  </div>
+</div>
+<div class="fm-rightpan">
+  <div class="fmr-tabs" ng-if="vm.selectedWidget && vm.selectedWidget.tag">
+    <div class="fmr-tabItem" ng-class="{'active':vm.selectedTab == 0}" ng-click="vm.selectedTab = 0">Settings</div>
+    <div class="fmr-tabItem" ng-class="{'active':vm.selectedTab == 1}" ng-click="vm.selectedTab = 1">My Flows</div>
+  </div>
+  <div ng-if="vm.selectedWidget && vm.selectedWidget.tag" class="fmr-container"  ng-show="vm.selectedTab == 0">
+    <div class="fmrc-name">{{vm.selectedWidget.tag}}</div>
+    <div class="fmrc-method" ng-if="vm.selectedWidget.canWriteMethod" ng-click="vm.createMethod()">
+      <div class="fmrcm-mainBtn">Edit Method</div>
+    </div>
+    <div class='fmrc-method' ng-class="{'active':vm.selectedFunction.name == output.name, 'editable':output.type == 'direct'}"
+         ng-repeat="output in vm.selectedWidget.methods"
+         ng-if="output.output && !vm.simpleFlow || output.output && vm.simpleFlow && output.name == vm.defaultMethod">
+      <span ng-click="vm.editMethod(output)" class="fmrcm-btn" ng-if="output.type == 'direct'"><i class="fa fa-code"></i></span>
+      <div class="fmrcm-mainBtn"  ng-click="vm.selectFunction(output)">
+        <span>{{output.name}}</span>
+      </div>
+    </div>
+  </div>
+  <div ng-if="vm.selectedWidget && vm.selectedWidget.tag" class="fmr-container myflow"  ng-show="vm.selectedTab == 1">
+    <div ng-repeat="(key, flows) in vm.flowJSON[vm.selectedWidget.tag]" class="fmrc-flowCont">
+      <div ng-repeat="flow in flows" class="fmrc-flowItem noselect">
+        <i class="fa fa-link fmrcfi-first-icon"></i>{{flow.from}}<i class="fa fa-arrows-h"></i> {{key}} <i class="fa fa-chevron-right"></i> {{flow.to}}
+        <div class="fmrcfi-close-button" ng-click="vm.removeFlow(vm.selectedWidget.tag, key, flow.id)"><i class="fa fa-times"></i></div>
+      </div>
+    </div>
+  </div>
+</div>
