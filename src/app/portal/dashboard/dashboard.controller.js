@@ -86,7 +86,8 @@ export class DashboardController{
         $scope.logWidgetData = {
             wrapper: {
                 vheight: 6,
-                width: 4
+                width: 4,
+                name: 'Logs',
             },
             wid: "logWidget1",
         };
@@ -95,7 +96,8 @@ export class DashboardController{
         $scope.mapWidgetData = {
             wrapper: {
                 vheight: 6,
-                width: 8
+                width: 8,
+                name: 'Assets',
             },
             wid: "logWidget1",
         };

@@ -12,7 +12,13 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
             templateUrl: 'app/portal/login/portal.login.html',
             controller: 'PortalLoginController',
             controllerAs: 'vm'
-        });
+        })
+        .state('user', {
+            url: '/user',
+            templateUrl: 'app/user/dashboard/dashboard.html',
+            controller: 'UserDashboardController',
+            controllerAs: 'vm'
+        })
 
 
     $urlRouterProvider.otherwise('/');

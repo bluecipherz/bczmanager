@@ -37,31 +37,4 @@
   }
 
 
-  .baseWidget{
-    @extend box;
-    padding: 3px;
-    .baseWidget-container{
-      @extend box;
-      width: 100%;
-      height: 100%;
-      background: #333;
-      .bwc-header,
-      .bwc-container{
-        @extend box;
-        position: absolute;
-      }
-      .bwc-header{
-        left:0;
-        top:0;
-        right:0;
-        height:35px;
-      }
-      .bwc-container{
-        left:3px;
-        right:3px;
-        bottom:3px;
-        top:38px;
-      }
-    }
-  }
 }

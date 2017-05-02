@@ -1,0 +1,15 @@
+<div class="userDashboard">
+    <div class="ud-header"></div>
+    <div class="ud-leftnav">
+        <div class="udl-item"
+             ng-class="{'active': item.navState == state.nav.navState}"
+             ng-click="leftNavService.selectNav(item)"
+             ng-repeat="item in leftNavService.navs">
+            <i class="fa fa-plus"></i>
+            {{item.name}}
+        </div>
+    </div>
+    <div class="ud-container">
+        <div class="uic-no-item">This Feature Is Comming Soon</div>
+    </div>
+</div>

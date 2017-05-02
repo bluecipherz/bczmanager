@@ -8,6 +8,16 @@ import { FlowController } from './flowManager/flowManager.controller';
 import { GridController } from './flowManager/grid.controller';
 import { PortalLoginController } from './portal/login/portal.login.controller';
 import { DashboardController } from './portal/dashboard/dashboard.controller';
+
+/*
+*   User
+* */
+import { UserDashboardController } from './user/dashboard/user.dashboard.controller';
+import { userDashboardService } from './user/dashboard/user.dashboard.service';
+import { leftNavService } from './user/dashboard/services/left.nav.service';
+
+
+
 import { http } from './portal/httpService/httpService';
 
 import { videoPlayer } from './widgets/common/videoPlayer/video.player';
@@ -24,10 +34,12 @@ import { treeDataService } from './services/treedata.service';
 import { loginService } from './services/login.service';
 import { appConstants } from './constants/app.constants';
 import { requestService } from './services/request.service';
+import { mapAPIService } from './services/map.api.service';
 import { assetAPIService } from './services/asset.api.service';
 import { groupAPIService } from './services/group.api.service';
 import { userAPIService } from './services/user.api.service';
 import { roleAPIService } from './services/role.api.service';
+import { $s } from './services/state.service';
 import { helperTestService } from './test/helpertest.service';
 import { portalLoginService } from './portal/login/portal.login.service';
 import { LoginDialogController } from './main/login/login.dialog.controller';
@@ -41,6 +53,8 @@ import { setDom } from './flowManager/set.dom.directive';
 import { logWidget } from './widgets/blue/logWidget/log.widget';
 import { widgetWrapper } from './widgets/blue/widgetWrapper/widget.wrapper';
 import { mapWidget } from './widgets/blue/mapWidget/map.widget';
+
+import { $mapWidget } from './widgets/blue/mapWidget/map.widget.service';
 
 
 angular.module('management', [ 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngResource', 'ui.router', 'mm.foundation', 'toastr'])
@@ -77,13 +91,26 @@ angular.module('management', [ 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages
     .service('$inDialog', $inDialog)
     .service('portalLoginService', portalLoginService)
     .service('domHelperService', domHelperService)
+    .service('mapAPIService', mapAPIService)
+    .service('$s', $s)
 
     .controller('MainController', MainController)
     .controller('FlowController', FlowController)
     .controller('GridController', GridController)
+
+    /*
+    *   Dashboard
+    * */
     .controller('DashboardController', DashboardController)
     .controller('PortalLoginController', PortalLoginController)
     .controller('LoginDialogController', LoginDialogController)
+
+    /*
+    *   User
+    * */
+    .controller('UserDashboardController', UserDashboardController)
+    .service('userDashboardService', userDashboardService)
+    .service('leftNavService', leftNavService)
 
     .directive('dynamicController',() => new dynamicController())
     .directive('setDom',() => new setDom())
@@ -91,7 +118,9 @@ angular.module('management', [ 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages
 
     .directive('logWidget',() => new logWidget())
     .directive('widgetWrapper',() => new widgetWrapper())
-    .directive('mapWidget',() => new mapWidget());
+    .directive('mapWidget',() => new mapWidget())
+
+    .service('$mapWidget',  $mapWidget);
 
     // Pure javascript Flow Manager widgets;
     // flowManager.widget('widgetConnector', widgetConnector);

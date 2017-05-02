@@ -1,6 +1,7 @@
 
 
 
+$theme : #6bd99e;
 $themeColor1 : #3498db;
 $themeColor2 : #6389a8;
 $themeRed : #e74c3c;
@@ -455,8 +456,6 @@ $topbar-background: #5AADBB;
 }
 
 
-$theme : #6bd99e;
-
 
 
 .portalLogin{
@@ -522,3 +521,8 @@ pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
 .boolean { color: blue; }
 .null { color: magenta; }
 .key { color: red; }
+
+
+[ng-click]{
+  outline: none;
+}
