@@ -40,11 +40,24 @@ export class TurboController{
 
             if(msgBody.user !== $player.getUser()){
 
-                if(msgBody.topic === "requestHosts"){
+                if(msgBody.topic === "positionChanged"){
+                    setPosition(msgBody)
+
+                }else if(msgBody.topic === "requestHosts"){
                     sendHosts();
 
                 }else if(msgBody.topic === "hostList"){
                     setHosts(msgBody.msg);
+
+                }else if(msgBody.topic === "gameStarted"){
+                    sendMessage("gameObject", $game.getGame())
+
+                }else if(msgBody.topic === "gameObject"){
+                    syncPlayers(msgBody.msg);
+                    sendMessage("gameObjectReply", $game.getGame())
+
+                }else if(msgBody.topic === "gameObjectReply"){
+                    syncPlayers(msgBody.msg);
 
                 }
 
@@ -128,7 +141,32 @@ export class TurboController{
 
 
         function eventHandler(tag, data) {
-            console.log(tag)
+
+            if(tag === "positionChanged"){
+                sendMessage("positionChanged", data);
+
+            }else if(tag === "gameStarted"){
+                sendMessage("gameStarted");
+
+            }else if(tag === "scopeApply"){
+                $timeout(function () {
+                    $scope.$apply();
+                })
+            }
+        }
+
+
+        function setPosition(msg) {
+            $game.setPosition(msg.user, msg.msg)
+        }
+
+
+        function syncPlayers(game) {
+            if(game && game.players){
+
+                $game.appendPlayer(game.players);
+
+            }
         }
 
 
@@ -181,6 +219,16 @@ export class TurboController{
 
         vm.isGameStarted = function () {
             return $game.isStarted();
+        };
+
+
+        vm.getGame = function () {
+            return $game.getGame();
+        };
+
+
+        vm.getUser = function () {
+            return $player.getUser();
         };
 
 

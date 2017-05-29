@@ -12,6 +12,7 @@
     </div>
 </div>
 
-<div class="gameScene" ng-show="vm.isGameStarted()">
-    Game
+<div class="fullscreen gameScene" ng-show="vm.isGameStarted()">
+    <div class="hostName">{{vm.getGame().host.hostid}}</div>
+    <div class="player" id="player-{{user.username}}" ng-repeat="user in vm.getGame().players">{{user.username}}</div>
 </div>
