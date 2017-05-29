@@ -50,6 +50,13 @@ import { inDialog } from './widgets/directives/inDialog/in.dialog';
 import { dynamicController } from './flowManager/dynamic.controller.directive';
 import { setDom } from './flowManager/set.dom.directive';
 
+
+import { TurboController } from './turbo/turbo.controller';
+import { $game } from './turbo/components/game';
+import { $player } from './turbo/components/player';
+
+
+
 import { logWidget } from './widgets/blue/logWidget/log.widget';
 import { widgetWrapper } from './widgets/blue/widgetWrapper/widget.wrapper';
 import { mapWidget } from './widgets/blue/mapWidget/map.widget';
@@ -93,10 +100,13 @@ angular.module('management', [ 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages
     .service('domHelperService', domHelperService)
     .service('mapAPIService', mapAPIService)
     .service('$s', $s)
+    .service('$game', $game)
+    .service('$player', $player)
 
     .controller('MainController', MainController)
     .controller('FlowController', FlowController)
     .controller('GridController', GridController)
+    .controller('TurboController', TurboController)
 
     /*
     *   Dashboard

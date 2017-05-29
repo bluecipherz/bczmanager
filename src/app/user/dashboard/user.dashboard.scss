@@ -1,3 +1,6 @@
+
+$themeBlack:#555;
+
 .userDashboard{
   @extend box;
   @extend basicFont;
@@ -33,7 +36,7 @@
     .udl-item.active:hover,
     .udl-item.active{
       cursor: default;
-      background: $theme;
+      background: $themeGreen;
       color: #fff;
     }
     .udl-item{
@@ -51,12 +54,136 @@
     left:250px;
     right:0;
     bottom: 0;
+    padding: 5px;
     .uic-no-item{
       width:100%;
       height:100%;
       font-size: 30px;
       color: #ccc;
       @extend textVerticalAlign;
+    }
+    .udc-box{
+      @extend box;
+      width: 50%;
+      height: 50%;
+      padding: 5px;
+      .udcb-inner{
+        @extend box;
+        width: 100%;
+        height: 100%;
+        .udc-heading{
+          @extend box;
+          height: 40px;
+          width: 100%;
+          position: absolute;
+          top:0;
+          line-height:40px;
+          padding-left: 10px;
+          background: $themeBlack;
+          z-index: 100;
+          font-family: gotham-b;
+          font-size: 16px;
+          color: #fff;
+        }
+        .udc-listcont{
+          @extend box;
+          width: 100%;
+          height: 100%;
+          border: 2px solid $themeBlack;
+          overflow: auto;
+          padding-top: 38px;
+          @extend coolbarSmall;
+
+          .udcl-item.active:hover,
+          .udcl-item.active{
+            background: $themeGreen;
+            color: #fff;
+            cursor: default;
+          }
+          .udcl-item:hover{
+            cursor: pointer;
+            background: #fafafa;
+          }
+          .udcl-item{
+            @extend box;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            padding-left: 10px;
+            //border-bottom:1px solid #ddd;
+          }
+        }
+
+        .udc-health{
+          @extend box;
+          width: 100%;
+          height: 100%;
+          padding: 0 10px;
+          .udch-inner.active{
+            background: $themeGreen;
+          }
+          .udch-inner{
+            @extend box;
+            width: 100%;
+            height: 100%;
+            background: #ddd;
+            color: #aaa;
+            @include transition(0.5s);
+            padding: 5px 25px;
+            overflow: auto;
+            @extend coolbarSmall;
+            .udchi-noproduct{
+              @extend textVerticalAlign;
+              height: 100%;
+              color: #999;
+            }
+            .udchi-item{
+              color: #fff;
+              @extend box;
+              width: 100%;
+              padding-top: 20px;
+              .udchii-name{
+                @extend box;
+                width: 100%;
+                font-family: gotham-b;
+              }
+              .udchii-desc{
+                width: 100%;
+                @extend box;
+                line-height: 120%;
+                font-size: 10px;
+              }
+              .udchii-progressRaw{
+                @extend box;
+                width: 100%;
+                font-family:gotham-b;
+                font-size:25px;
+              }
+              .udchii-progress{
+                @extend box;
+                width: 100%;
+                position: absolute;
+                bottom:0;
+                left:0;
+                background: rgba(255,255,255,0.5);
+                height: 1px;
+                .udchiip-level{
+                  @extend box;
+                  position: absolute;
+                  top:-2px;
+                  height: 3px;
+                  background-color: #fff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .udc-half{
+      @extend box;
+      width: 50%;
+      height: 100%;
     }
   }
 }

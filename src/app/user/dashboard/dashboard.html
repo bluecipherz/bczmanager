@@ -9,7 +9,34 @@
             {{item.name}}
         </div>
     </div>
-    <div class="ud-container">
-        <div class="uic-no-item">This Feature Is Comming Soon</div>
+    <div class="ud-container" ng-show="state.nav.navState == appConstants.navState.DASHBOARD">
+        <div class="udc-box">
+            <div class="udcb-inner">
+                <div class="udc-half">
+                    <div class="udc-heading">Products</div>
+                    <div class="udc-listcont">
+                        <div class="udcl-item"
+                             ng-class="{'active': product.id == state.product.id}"
+                             ng-click="setProduct(product)"
+                             ng-repeat="product in products">{{product.name}}</div>
+                    </div>
+                </div>
+                <div class="udc-half">
+                    <div class="udc-health">
+                        <div class="udch-inner" ng-class="{'active': state.product}">
+                            <div class="udchi-noproduct" ng-hide="state.product">Please Select A Product</div>
+                            <div class="udchi-item" ng-repeat="report in productInfo" ng-show="state.product">
+                                <div class="udchii-name">{{report.name}}</div>
+                                <div class="udchii-desc">{{report.description}}</div>
+                                <div class="udchii-progressRaw">{{report.progress}}%</div>
+                                <div class="udchii-progress">
+                                    <div class="udchiip-level" style="width:{{report.progress}}%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

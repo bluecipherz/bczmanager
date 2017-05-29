@@ -14,11 +14,17 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
             controllerAs: 'vm'
         })
         .state('user', {
-            url: '/user',
+            url: '/user/:id',
             templateUrl: 'app/user/dashboard/dashboard.html',
             controller: 'UserDashboardController',
             controllerAs: 'vm'
         })
+        .state('turbo', {
+            url: '/turbo',
+            templateUrl: 'app/turbo/turbo.html',
+            controller: 'TurboController',
+            controllerAs: 'vm'
+        });
 
 
     $urlRouterProvider.otherwise('/');

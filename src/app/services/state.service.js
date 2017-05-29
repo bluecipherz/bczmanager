@@ -67,7 +67,7 @@ export class $s{
             let instance = getInstance(ID);
 
             if(instance){
-                let tempState = newState(state);
+                let tempState = newState(ID, state);
                 instance.states.push(tempState);
                 callEventListeners(ID, 'stateChange', tempState)
             }
@@ -85,11 +85,21 @@ export class $s{
         }
 
 
-        function newState(state) {
+        function newState(ID, state) {
+            let currentState = getState(ID);
             return {
-                nav: state.nav,
-                tab: state.tab,
+                nav: state.nav || currentState.nav,
+                tab: state.tab || currentState.tab,
+                product: state.product || currentState.product,
             }
+        }
+
+
+        function getState(ID) {
+            let instance = getInstance(ID);
+            return instance.states.length ?
+                instance.states[instance.states.length-1] :
+                {};
         }
 
 

@@ -1,0 +1,17 @@
+<div class="fullscreen authScreen" ng-if="!vm.isAuthed()">
+    <input type="text" ng-model="vm.username" placeholder="username">
+    <button ng-class="{'active': vm.isJoinable() }" ng-click="vm.join()">Join</button>
+</div>
+
+
+<div class="fullscreen" ng-if="vm.isAuthed() && !vm.isConnected() && !vm.isGameStarted()">
+    <div class="lobby">
+        <div class="l-searching" ng-if="!vm.getHosts()">Searching For Hosts</div>
+        <div class="l-hosts" ng-click="vm.startGame(host)" ng-repeat="host in vm.getHosts()">{{host.hostid}}</div>
+        <div class="l-button" ng-click="vm.createHost()" ng-show="vm.amIHost()">Create Host</div>
+    </div>
+</div>
+
+<div class="gameScene" ng-show="vm.isGameStarted()">
+    Game
+</div>
