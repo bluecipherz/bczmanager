@@ -54,6 +54,7 @@ import { setDom } from './flowManager/set.dom.directive';
 import { TurboController } from './turbo/turbo.controller';
 import { $game } from './turbo/components/game';
 import { $player } from './turbo/components/player';
+import { $playground } from './turbo/components/playground/playground';
 
 
 
@@ -100,8 +101,10 @@ angular.module('management', [ 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages
     .service('domHelperService', domHelperService)
     .service('mapAPIService', mapAPIService)
     .service('$s', $s)
+
     .service('$game', $game)
     .service('$player', $player)
+    .service('$playground', $playground)
 
     .controller('MainController', MainController)
     .controller('FlowController', FlowController)

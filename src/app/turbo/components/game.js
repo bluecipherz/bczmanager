@@ -3,7 +3,7 @@
  */
 export class $game{
 
-    constructor ($player){
+    constructor ($player, $playground){
         "ngInject"
 
 
@@ -41,12 +41,19 @@ export class $game{
 
 
         vm.start = function (host, events) {
+
+            let myConf = {
+                username: $player.getUser(),
+                side: host.hostid === $player.getUser() ? -1 : 1
+            };
+
             game = {
                 host: host,
                 events: events,
-                players: [{username: $player.getUser()}]
+                players: [myConf],
             };
 
+            $playground.startGame(game, myConf);
             game.events("gameStarted")
         };
 
@@ -77,6 +84,7 @@ export class $game{
                     }
                 }
                 game.events("scopeApply");
+                $player.setPlayerList(game.players);
             }
         };
 
@@ -91,18 +99,6 @@ export class $game{
         *
         * */
 
-
-        $(".gameScene").click(function (event) {
-            setPosition($player.getUser(), event.pageX, event.pageY)
-            game.events("positionChanged", {x:event.pageX, y:event.pageY})
-        });
-
-        function setPosition(id, x, y) {
-           $('#player-'+id).css({
-               left:x,
-               top:y
-           });
-        }
 
     }
 

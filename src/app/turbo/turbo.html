@@ -1,10 +1,10 @@
-<div class="fullscreen authScreen" ng-if="!vm.isAuthed()">
+<div class="fullscreen authScreen hostScene" ng-if="!vm.isAuthed()">
     <input type="text" ng-model="vm.username" placeholder="username">
     <button ng-class="{'active': vm.isJoinable() }" ng-click="vm.join()">Join</button>
 </div>
 
 
-<div class="fullscreen" ng-if="vm.isAuthed() && !vm.isConnected() && !vm.isGameStarted()">
+<div class="fullscreen hostScene" ng-if="vm.isAuthed() && !vm.isConnected() && !vm.isGameStarted()">
     <div class="lobby">
         <div class="l-searching" ng-if="!vm.getHosts()">Searching For Hosts</div>
         <div class="l-hosts" ng-click="vm.startGame(host)" ng-repeat="host in vm.getHosts()">{{host.hostid}}</div>
@@ -12,7 +12,10 @@
     </div>
 </div>
 
-<div class="fullscreen gameScene" ng-show="vm.isGameStarted()">
+<div class="fullscreen gameScene" >
     <div class="hostName">{{vm.getGame().host.hostid}}</div>
-    <div class="player" id="player-{{user.username}}" ng-repeat="user in vm.getGame().players">{{user.username}}</div>
+    <svg id="turboId"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <rect class="t-minigun" id="tminigun-b"></rect>
+        <rect class="t-minigun" id="tminigun-c"></rect>
+    </svg>
 </div>

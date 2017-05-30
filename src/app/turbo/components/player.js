@@ -14,6 +14,7 @@ export class $player{
 
         let vm = this;
         let username = null;
+        let playerList = [];
 
         /*
         *
@@ -32,6 +33,19 @@ export class $player{
 
         vm.getUser = function () {
             return username;
+        };
+
+        vm.getMyInfo = function () {
+            for(let idx in playerList){
+                if(playerList[idx].username === vm.getUser()){
+                    return playerList[idx];
+                }
+            }
+            return null;
+        };
+
+        vm.setPlayerList = function (list) {
+            playerList = list;
         };
 
 

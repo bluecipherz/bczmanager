@@ -4,7 +4,7 @@
 
 export class TurboController{
 
-    constructor ($game, $player, $scope, $timeout) {
+    constructor ($game, $player, $scope, $timeout, $playground) {
         "ngInject"
 
         console.log("TurboController");
@@ -40,8 +40,8 @@ export class TurboController{
 
             if(msgBody.user !== $player.getUser()){
 
-                if(msgBody.topic === "positionChanged"){
-                    setPosition(msgBody)
+                if(msgBody.topic === "gameEvent"){
+                    $playground.events(msgBody);
 
                 }else if(msgBody.topic === "requestHosts"){
                     sendHosts();
@@ -68,6 +68,7 @@ export class TurboController{
         function init() {
             connectToMQTT();
             requestHost();
+            // vm.createHost();
         }
 
         function sendMessage(topic, msg) {
@@ -142,8 +143,8 @@ export class TurboController{
 
         function eventHandler(tag, data) {
 
-            if(tag === "positionChanged"){
-                sendMessage("positionChanged", data);
+            if(tag === "gameEvent"){
+                sendMessage("gameEvent", data);
 
             }else if(tag === "gameStarted"){
                 sendMessage("gameStarted");
@@ -169,8 +170,6 @@ export class TurboController{
             }
         }
 
-
-        init();
 
         /*
         *
@@ -230,6 +229,13 @@ export class TurboController{
         vm.getUser = function () {
             return $player.getUser();
         };
+
+
+
+
+
+        init();
+
 
 
     }
